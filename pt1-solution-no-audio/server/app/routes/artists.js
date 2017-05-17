@@ -12,6 +12,7 @@ router.get('/', function (req, res, next) {
   .catch(next);
 });
 
+// uses /api/artists/:artistID
 router.param('artistId', function (req, res, next, id) {
   Artist.findById(id)
   .then(artist => {
@@ -31,12 +32,14 @@ router.get('/:artistId', function (req, res) {
   res.json(req.artist);
 });
 
+// api/artists/:artistId/albums
 router.get('/:artistId/albums', function (req, res, next) {
   req.artist.getAlbums() // instance method, check it out in the model
   .then(albums => res.json(albums))
   .catch(next);
 });
 
+// api/artists/:artistId/songs
 router.get('/:artistId/songs', function (req, res, next) {
   req.artist.getSongs({
     include: [Artist]
