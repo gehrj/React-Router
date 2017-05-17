@@ -12,7 +12,7 @@ export default class Album extends Component {
     return (
       <div className="album">
         <div>
-          <h3>{ album.name } <a href={`mailto:?subject=${album.name}`}><span className='glyphicon glyphicon-share-alt'/></a></h3>
+          <h3>{ album.name } <a href={`mailto:?subject=${album.name}`}><span className='glyphicon glyphicon-share-alt btn btn-primary'/></a></h3>
           <img src={ album.imageUrl } className="img-thumbnail" />
         </div>
         <Songs songs={album.songs} />
