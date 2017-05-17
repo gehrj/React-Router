@@ -5,18 +5,25 @@ import Album from './components/Album';
 import Albums from './components/Albums';
 import Artist from './components/Artist';
 import Artists from './components/Artists';
-import { Router, Route, hashHistory, IndexRedirect } from 'react-router'
+import Songs from './components/Songs';
+import FourohFour from './components/notFound';
+import { Router, Route, browserHistory, IndexRedirect, Redirect } from 'react-router'
 
 ReactDOM.render(
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route path='/' component={Main}>
-      <Route path='/albums/:albumId' component={Album} />
       <Route path='/albums' component={Albums} />
+      <Route path='/albums/:albumId' component={Album} />
       <Route path='/artists' component={Artists} />
-      <Route path='/artists/:artistId' component={Artist} />
+      <Route path='/artists/:artistId' component={Artist}>
+        <Route path='albums' component={Albums}/>
+        <Route path='songs' component={Songs}/>
+      </Route>
       <Route path='/artists/:artistId/albums' component={Albums} />
       {/* <Route path='/artists/:artistId/songs' component={Songs} /> */}
       <IndexRedirect to='/albums' />
+      <Route path='/notFound' component={FourohFour} />
+      <Redirect from='*' to='/notFound' />
     </Route>
   </Router>,
   document.getElementById('app')

@@ -8,9 +8,9 @@ const Sidebar = (props) => {
       <img src="juke.svg" className="logo" />
       <section>
         <h4 className="menu-item active">
-          <Link to='/albums'>ALBUMS</Link>
+          <Link to='/albums' className='nav nav-tabs' activeClassName='active'>ALBUMS</Link>
           <br/>
-          <Link to='/artists'>ARTISTS</Link>
+          <Link to='/artists' className='nav nav-tabs' activeClassName='active'>ARTISTS</Link>
         </h4>
       </section>
     </sidebar>
